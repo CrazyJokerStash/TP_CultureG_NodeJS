@@ -12,7 +12,8 @@ function quizz(str)
 {
   var parsing = axios.get('https://opentdb.com/api.php?amount=10')
   .then(function(response){
-    for(item of response.data.results) {
+    try {
+      for(item of response.data.results) {
       concQuestion = concQuestion + "//" + item.question
       concReponse = concReponse + "//" + item.correct_answer
       concTabQuestion = concQuestion.split("//")
@@ -36,6 +37,10 @@ function quizz(str)
         i++
       }
       console.log('You have ' + count + ' points')
+    }
+    catch(error){
+      console.error(error)
+    }
     });
     return count
 }
@@ -55,7 +60,7 @@ function manuel()
   console.log('If you want to play solo, just use \"-solo\"')
   console.log('If you want to play with a friend, just use \"-versus\"')
 }
-async function choix()
+function choix()
 {
   if (process.argv[2] == "-solo")
   {
@@ -63,9 +68,9 @@ async function choix()
   }
   else if (process.argv[2] == "-versus")
   {
-    const score1 = await quizz("Player 1 begin !")
-    const score2 = await quizz("Player 2 begin !")
-    await scores(score1, score2)
+    const score1 = quizz("Player 1 begin !")
+    const score2 = quizz("Player 2 begin !")
+    scores(score1, score2)
   }
   else if (process.argv[2] == "-h")
   {
