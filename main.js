@@ -8,7 +8,7 @@ var i = 1
 var concTabQuestion = {}
 var concTabReponse = {}
 
-function quizz(str)
+async function quizz(str)
 {
   var parsing = axios.get('https://opentdb.com/api.php?amount=10')
   .then(function(response){
@@ -60,7 +60,8 @@ function manuel()
   console.log('If you want to play solo, just use \"-solo\"')
   console.log('If you want to play with a friend, just use \"-versus\"')
 }
-function choix()
+
+async function choix()
 {
   if (process.argv[2] == "-solo")
   {
@@ -68,8 +69,8 @@ function choix()
   }
   else if (process.argv[2] == "-versus")
   {
-    const score1 = quizz("Player 1 begin !")
-    const score2 = quizz("Player 2 begin !")
+    const score1 = await quizz("Player 1 begin !")
+    const score2 = await quizz("Player 2 begin !")
     scores(score1, score2)
   }
   else if (process.argv[2] == "-h")
