@@ -1,6 +1,7 @@
 var fs = require('fs')
 var axios = require('axios')
 var readline = require('readline-sync')
+var program = require('commander')
 var concQuestion = ""
 var concReponse = ""
 var count = 0
@@ -8,6 +9,13 @@ var i = 1
 var concTabQuestion = {}
 var concTabReponse = {}
 var Promise = require('es6-promise').Promise;
+
+program
+  .version('0.1.0')
+  .option('-s, --solo', 'Player alone')
+  .option('-v, --versus', '1vs1')
+  .option('-h, --help', 'Show the manual')
+  .parse(process.argv);
 
 async function quizz(str)
 {
@@ -53,32 +61,41 @@ async function quizz(str)
 function scores(score1, score2)
 {
   if (score1 > score2)
+  {
     console.log("Player 1 win with " + score1 + " points\n")
+    fs.writeFileSync("Resultat Quizz", "Player 1 win with " + score1 + " points", "UTF-8")
+  }
+  else if (score1 < score2)
+  {
+    console.log("Player 2 win with " + score2 + " points\n")
+    fs.writeFileSync("Resultat Quizz", "Player 2 win with " + score2 + " points", "UTF-8")
+  }
   else
-    {
-      console.log("Player 2 win with " + score2 + " points\n")
-    }
+  {
+    console.log("Player 1 and 2 have same points\n")
+    fs.writeFileSync("Resultat Quizz", "Player 1 and 2 have same points", "UTF-8")
+  }
 }
 
 function manuel()
 {
-  console.log('If you want to play solo, just use \"-solo\"')
-  console.log('If you want to play with a friend, just use \"-versus\"')
+  console.log('If you want to play solo, just use \"-s\"')
+  console.log('If you want to play with a friend, just use \"-v\"')
 }
 
 async function choix()
 {
-  if (process.argv[2] == "-solo")
+  if (program.solo)
   {
     quizz()
   }
-  else if (process.argv[2] == "-versus")
+  else if (program.versus)
   {
     var score1 = await quizz("Player 1 begin !\n")
     var score2 = await quizz("Player 2 begin !\n")
     scores(score1, score2)
   }
-  else if (process.argv[2] == "-h")
+  else
   {
     manuel()
   }
