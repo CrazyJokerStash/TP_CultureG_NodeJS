@@ -36,7 +36,7 @@ async function quizz(str)
           }
           else
           {
-            console.log('Fail ! Next !\n')
+            console.log('Fail ! it was ' + concTabReponse[i] + '\n')
           }
           i++
         }
