@@ -28,7 +28,6 @@ async function quizz(str)
           while (i < concTabQuestion.length)
           {
             console.log(concTabQuestion[i])
-            console.log(concTabReponse[i])
             const answer = readline.question("What is the answer ?\n")
           if (answer == concTabReponse[i])
           {
