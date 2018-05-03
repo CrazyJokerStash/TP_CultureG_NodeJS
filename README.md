@@ -8,6 +8,8 @@ Pour cela il faut faire :
 
 cd TP_CultureG_NodeJS
 
+npm install
+
 npm install -g
 
 mycommand + l'argument
