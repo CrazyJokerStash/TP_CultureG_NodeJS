@@ -6,7 +6,7 @@ axios, fs, readline-sync, commander et es6-promise
 
 exemple : npm install axios
 
-De plus, afin de lancer le mini-jeux, il faut utiliser les arguments suivants :
+De plus, afin de lancer le mini-jeu, il faut utiliser les arguments suivants :
 
 -s pour une partie en solo
 -v pour une partie en multijoueur

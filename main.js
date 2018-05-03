@@ -1,14 +1,14 @@
-var fs = require('fs')
-var axios = require('axios')
-var readline = require('readline-sync')
-var program = require('commander')
-var concQuestion = ""
-var concReponse = ""
-var count = 0
-var i = 1
-var concTabQuestion = {}
-var concTabReponse = {}
-var Promise = require('es6-promise').Promise;
+#!/usr/bin/env node
+let fs = require('fs')
+let axios = require('axios')
+let readline = require('readline-sync')
+let program = require('commander')
+let concQuestion = ""
+let concReponse = ""
+let count = 0
+let concTabQuestion = {}
+let concTabReponse = {}
+let Promise = require('es6-promise').Promise;
 
 program
   .version('0.1.0')
@@ -22,7 +22,7 @@ async function quizz(str)
   return new Promise(function(resolve, reject)
   {
     count = 0
-    var parsing = axios.get('https://opentdb.com/api.php?amount=10')
+    let parsing = axios.get('https://opentdb.com/api.php?amount=10')
     .then(function(response){
       try {
         for(item of response.data.results) {
@@ -33,7 +33,7 @@ async function quizz(str)
         }
         if (str != null)
           console.log(str)
-          while (i < concTabQuestion.length)
+          for (let i = 1; i < concTabQuestion.length; i++)
           {
             console.log(concTabQuestion[i])
             const answer = readline.question("What is the answer ?\n")
@@ -46,7 +46,6 @@ async function quizz(str)
           {
             console.log('Fail ! it was ' + concTabReponse[i] + '\n')
           }
-          i++
         }
         console.log('You have ' + count + ' points\n')
         resolve(count)
@@ -91,8 +90,8 @@ async function choix()
   }
   else if (program.versus)
   {
-    var score1 = await quizz("Player 1 begin !\n")
-    var score2 = await quizz("Player 2 begin !\n")
+    let score1 = await quizz("Player 1 begin !\n")
+    let score2 = await quizz("Player 2 begin !\n")
     scores(score1, score2)
   }
   else
