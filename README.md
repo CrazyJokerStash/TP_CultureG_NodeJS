@@ -2,9 +2,13 @@
 
 Avant de lancer le projet, il faut installer :
 
-axios, fs, readline-sync, commander et es6-promise
+axios, readline-sync et commander
 
-exemple : npm install axios
+Pour cela il faut faire :
+
+cd TP_CultureG_NodeJS
+npm install -g
+mycommand + l'argument
 
 De plus, afin de lancer le mini-jeu, il faut utiliser les arguments suivants :
 
@@ -12,7 +16,7 @@ De plus, afin de lancer le mini-jeu, il faut utiliser les arguments suivants :
 -v pour une partie en multijoueur
 -h pour avoir accès au manuel
 
-exemple : node main.js -v (pour lancer une partie en multijoueur)
+exemple : mycommand -v (pour lancer une partie en multijoueur)
 
 A la fin des games en versus, un fichier sera créer (Resultat Quizz) avec le
 score du gagnant !
