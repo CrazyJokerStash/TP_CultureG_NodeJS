@@ -6,7 +6,8 @@
   "devDependencies": {
     "axios": "^0.18.0",
     "readline-sync": "^1.4.9",
-    "commander": "^2.15.1"
+    "commander": "^2.15.1",
+    "es6-promise": "^4.2.4"
   },
   "scripts": {
     "start": "node main.js"
