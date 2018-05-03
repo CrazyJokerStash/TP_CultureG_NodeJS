@@ -5,8 +5,8 @@
   "main": "main.js",
   "devDependencies": {
     "axios": "^0.18.0",
-    "readline-sync": "^1.4.9",
-    "es6-promise": "^4.2.4",
+    "readline-sync": "=1.4.9",
+    "es6-promise": "=4.2.4",
     "commander": "^2.15.1"
   },
   "scripts": {
